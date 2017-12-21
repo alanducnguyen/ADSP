@@ -22,7 +22,7 @@ for i_SNR = 1:length(SNRdBs)
        % 1     0     0     1
        % 0     0     1     0
        
-       msg_symbol = randi([0 1],N_frame*b,1);
+       msg_symbol = round(rand([1 N_frame*b]));
        
        conv_encoded_bits = convencode(msg_symbol');
        
@@ -45,16 +45,17 @@ for i_SNR = 1:length(SNRdBs)
        odd_new_soft_rx_bits = new_soft_rx_bits(:,1:2:end);  % odd matrix
        even_new_soft_rx_bits = new_soft_rx_bits(:,2:2:end);  % event matrix
        new_soft_rx_bits_2 = [odd_new_soft_rx_bits ; even_new_soft_rx_bits];
-        
+       
        viterbi_bits = myviterbi(new_soft_rx_bits_2');
+       
        %keep error of each i packet, then we calculate BER
-       soft_error = sum(abs(msg_symbol' - viterbi_bits))/2;
+       soft_error = sum(abs(msg_symbol - viterbi_bits));
        
        %hard_errors(i_packet) = sum(hard_error);
        soft_errors(i_packet) = sum(soft_error);
     end %end for loop for i packet
     
-    soft_BER(i_SNR) = sum(soft_errors)/(N_packet*N_frame*b*2*2);
+    soft_BER(i_SNR) = sum(soft_errors)/(N_packet*N_frame*b);
 end %end for loop for i SNR
 
 figure

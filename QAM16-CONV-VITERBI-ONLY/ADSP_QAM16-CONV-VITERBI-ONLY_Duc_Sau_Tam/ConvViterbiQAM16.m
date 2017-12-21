@@ -3,9 +3,9 @@ clear
 close all
 % begin
 % N_packet = 1000; % No of iterations
-N_packet = 1000;
+N_packet = 100;
 b = 4; % modulation index 1:BPSK, 2:QPSK, 4: 16 QAM, 6: 64 QAM
-N_frame = 2; % No of Modulation symbols per packet
+N_frame = 4; % No of Modulation symbols per packet
 M = 16;
 SNRdBs = (0:5:40);
 sq2 = sqrt(2);
@@ -49,7 +49,7 @@ for i_SNR = 1:length(SNRdBs)
        if strcmp(channel,'rayleigh')
            H(:,1) = (randn(N_frame*2,1)+ 1i*randn(N_frame*2,1))/sq2;
        elseif strcmp(channel,'awgn')
-           H = repmat([1,0],N_frame,1);
+           H = repmat([1,0],N_frame*2,1);
        else
            error('This channel is not supported');
        end
@@ -62,6 +62,9 @@ for i_SNR = 1:length(SNRdBs)
        
        %hard_rx_bits = harddemapper(rx_sym);
        soft_rx_bits = softdemapper(rx_sym);
+       
+       soft_error_mapper = sum(abs(conv_encoded_bits - soft_rx_bits));
+       soft_error_mappers(i_packet) = sum(soft_error_mapper);
        % re-organization bit structure change to properly format to send to
        % viterbi function.
        new_soft_rx_bits =[];
@@ -77,23 +80,31 @@ for i_SNR = 1:length(SNRdBs)
        new_soft_rx_bits_2 = [odd_new_soft_rx_bits ; even_new_soft_rx_bits];
        
        viterbi_bits = myviterbi(new_soft_rx_bits_2');
+       
        %keep error of each i packet, then we calculate BER
        soft_error = sum(abs(msg_symbol - viterbi_bits));
+       if soft_error>0
+           msg_symbol;
+           viterbi_bits;
+       end
        soft_errors(i_packet) = sum(soft_error);
     end %end for loop for i packet
+    soft_mapper_BER(i_SNR) = sum(soft_error_mappers)/(N_packet*N_frame*b*2);
+    soft_BER(i_SNR) = sum(soft_errors)/(N_packet*N_frame*b*2);
     
-    soft_BER(i_SNR) = sum(soft_errors)/(N_packet*N_frame*b);
 end %end for loop for i SNR
 
-figure;
+
 axes2 = axes('Parent',figure,'Yscale','log','YMinorTick','on','YminorGrid','on','FontSize',12,'FontName','Time New Roman');
 xlim(axes2,[0 max(SNRdBs)]);
 ylim(axes2,[1e-006 1]);
 grid(axes2,'on');
 hold(axes2,'on');
-
+semilogy(SNRdBs, soft_mapper_BER, 'bo-')
+hold on;
 %Print SOFT decision BER vs SNR
-semilogy(SNRdBs, soft_BER, 'r^-')
+semilogy(SNRdBs, soft_BER, 'ro-')
+hold on;
 grid on;
 xlabel('SNR[dB]');
 ylabel('BER');

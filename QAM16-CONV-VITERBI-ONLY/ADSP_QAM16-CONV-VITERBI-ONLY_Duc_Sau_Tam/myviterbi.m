@@ -53,7 +53,7 @@ function [ decoded_bits ] = myviterbi( input_bits )
         % if st = 1
         if st == 1
             %Initialization of distance for start point = 0
-            distance(1,1)=0;
+            distance(1,1)=1;
             % set the previous position at 1 (state  = 00)
             previous_pos=[1];
             % set state history = 0, this variable will keep the parent of each
@@ -134,14 +134,41 @@ function [ decoded_bits ] = myviterbi( input_bits )
         distance_flip = fliplr(distance);
         % END checking st
     end
+%     distance_flip =[
+%      4     3     3     2     3     2     2     1     0
+%      4     4     3     3     2     3     1   Inf   Inf
+%      4     3     3     3     3     2     2     1   Inf
+%      3     4     3     3     2     2     3   Inf   Inf
+%         ];
+%     distance_flip
+%     smallest_weight = min(distance_flip(:, 8))
+%     
+%     smallest_position = find( distance_flip(:, st)==smallest_weight )
+%     
+%     return
+    
     % winning path sequences
-    winning_path = zeros(1, N); %STATE SEQUENCE array
+    winning_path = ones(1, N); %STATE SEQUENCE array
     for st = 1:1:N+1
         %find the smallest value in recorded distance
         smallest_weight = min(distance_flip(:, st));
         smallest_position = find( distance_flip(:, st)==smallest_weight );
-        winning_path(st)=smallest_position(1);
+        if(length(smallest_position)>1 && st>=2)
+            previous = winning_path(st-1);
+            for option=1:1:length(smallest_position)
+                pos_option = smallest_position(option);
+                if (previous == 1 || previous == 2) && (pos_option==1 || pos_option==3)
+                    winning_path(st)=pos_option;
+                end
+                if (previous == 3 || previous == 4) && (pos_option==2 || pos_option==4)
+                    winning_path(st)=pos_option;
+                end
+            end
+        else
+            winning_path(st)=smallest_position(1);
+        end
     end
+    
     % revert the winning path to get the correct order.
     winning_path = fliplr(winning_path);
     decoded_bits = [];
@@ -254,8 +281,11 @@ function [bit_trace_back] = get_bit_trace_back(state,next_state)
     %--------------------------------------------
     %
     % transition_status= [0 Inf 1 Inf; 0 Inf 1 Inf; Inf 0 Inf 1; Inf 0 Inf 1];
-    transition_status= [0 0 1 0; 0 0 1 0; 0 0 0 1; 0 0 0 1];
+    transition_status= [0 Inf 1 Inf; 0 Inf 1 Inf; Inf 0 Inf 1; Inf 0 Inf 1];
     %state
     %next_state
     bit_trace_back = transition_status(state,next_state);
+    if bit_trace_back == Inf
+        bit_trace_back=0;
+    end
 end

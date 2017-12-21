@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://www.raymaps.com/index.php/qam-theoretical-ber/ -->
+<html lang="en-US" class="gr__raymaps_com"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width">
+	<title>QAM Theoretical BER in AWGN | RAYmaps</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://www.raymaps.com/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="http://www.raymaps.com/wp-content/themes/twentythirteen/js/html5.js"></script>
+	<![endif]-->
+	<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link href="https://fonts.gstatic.com/" crossorigin="" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="RAYmaps » Feed" href="http://www.raymaps.com/index.php/feed/">
+<link rel="alternate" type="application/rss+xml" title="RAYmaps » Comments Feed" href="http://www.raymaps.com/index.php/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="RAYmaps » QAM Theoretical BER in AWGN Comments Feed" href="http://www.raymaps.com/index.php/qam-theoretical-ber/feed/">
+<!-- This site uses the Google Analytics by MonsterInsights plugin v6.2.6 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script async="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/analytics.js"></script><script type="text/javascript" data-cfasync="false">
+		var disableStr = 'ga-disable-UA-24029096-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-24029096-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('send','pageview');
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.raymaps.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56794,8205,9794,65039],[55358,56794,8203,9794,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./QAM Theoretical BER in AWGN _ RAYmaps_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="twentythirteen-fonts-css" href="./QAM Theoretical BER in AWGN _ RAYmaps_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./QAM Theoretical BER in AWGN _ RAYmaps_files/genericons.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentythirteen-style-css" href="./QAM Theoretical BER in AWGN _ RAYmaps_files/style.css" type="text/css" media="all">
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentythirteen-ie-css'  href='http://www.raymaps.com/wp-content/themes/twentythirteen/css/ie.css?ver=2013-07-18' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="post-ratings-raty-css" href="./QAM Theoretical BER in AWGN _ RAYmaps_files/jquery.raty.css" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","is_debug_mode":"false","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"","home_url":"http:\/\/www.raymaps.com","track_download_as":"event","internal_label":"int","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/frontend.min.js"></script>
+<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/jquery.js"></script>
+<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/jquery-migrate.min.js"></script>
+<link rel="https://api.w.org/" href="http://www.raymaps.com/index.php/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.raymaps.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.raymaps.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="MIMO Capacity in a Fading Environment" href="http://www.raymaps.com/index.php/mimo-capacity-fading-environment/">
+<link rel="next" title="Soft Frequency Reuse in LTE" href="http://www.raymaps.com/index.php/soft-frequency-reuse/">
+<meta name="generator" content="WordPress 4.9.1">
+<link rel="canonical" href="http://www.raymaps.com/index.php/qam-theoretical-ber/">
+<link rel="shortlink" href="http://www.raymaps.com/?p=1310">
+<link rel="alternate" type="application/json+oembed" href="http://www.raymaps.com/index.php/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.raymaps.com%2Findex.php%2Fqam-theoretical-ber%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.raymaps.com/index.php/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.raymaps.com%2Findex.php%2Fqam-theoretical-ber%2F&amp;format=xml">
+	<style type="text/css" id="twentythirteen-header-css">
+			.site-header {
+			background: url(http://www.raymaps.com/wp-content/uploads/2016/01/banner.bmp) no-repeat scroll top;
+			background-size: 1600px auto;
+		}
+		@media (max-width: 767px) {
+			.site-header {
+				background-size: 768px auto;
+			}
+		}
+		@media (max-width: 359px) {
+			.site-header {
+				background-size: 360px auto;
+			}
+		}
+		</style>
+	</head>
+
+<body class="post-template-default single single-post postid-1310 single-format-standard single-author sidebar" data-gr-c-s-loaded="true">
+	<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+			<a class="home-link" href="http://www.raymaps.com/" title="RAYmaps" rel="home">
+				<h1 class="site-title">RAYmaps</h1>
+				<h2 class="site-description">Simulate the World</h2>
+			</a>
+
+			<div id="navbar" class="navbar">
+				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
+					<button class="menu-toggle">Menu</button>
+					<a class="screen-reader-text skip-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/#content" title="Skip to content">Skip to content</a>
+					<div class="menu-home-container"><ul id="primary-menu" class="nav-menu"><li id="menu-item-2529" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2529"><a href="http://www.raymaps.com/">Home</a></li>
+<li id="menu-item-265" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-265"><a href="http://www.raymaps.com/index.php/eclipse">Eclipse</a></li>
+<li id="menu-item-2568" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2568"><a href="http://www.raymaps.com/index.php/android-apps/">Android Apps</a></li>
+<li id="menu-item-2638" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2638"><a href="http://www.raymaps.com/index.php/udemy-course/">Udemy Course</a></li>
+<li id="menu-item-282" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-282"><a href="http://www.raymaps.com/index.php/contact/">Contact</a></li>
+</ul></div>					<form role="search" method="get" class="search-form" action="http://www.raymaps.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form>				</nav><!-- #site-navigation -->
+			</div><!-- #navbar -->
+		</header><!-- #masthead -->
+
+		<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+						
+				
+<article id="post-1310" class="post-1310 post type-post status-publish format-standard hentry category-berp category-lte category-wimax tag-4g tag-awgn tag-ber tag-lte tag-qam tag-qpsk tag-wimax">
+	<header class="entry-header">
+		
+				<h1 class="entry-title">QAM Theoretical BER in AWGN</h1>
+		
+		<div class="entry-meta">
+			<span class="date"><a href="http://www.raymaps.com/index.php/qam-theoretical-ber/" title="Permalink to QAM Theoretical BER in AWGN" rel="bookmark"><time class="entry-date" datetime="2011-12-08T04:45:23+00:00">December 8, 2011</time></a></span><span class="categories-links"><a href="http://www.raymaps.com/index.php/category/sim/berp/" rel="category tag">BER Performance</a>, <a href="http://www.raymaps.com/index.php/category/stand/lte/" rel="category tag">LTE</a>, <a href="http://www.raymaps.com/index.php/category/stand/wimax/" rel="category tag">WiMAX</a></span><span class="tags-links"><a href="http://www.raymaps.com/index.php/tag/4g/" rel="tag">4G</a>, <a href="http://www.raymaps.com/index.php/tag/awgn/" rel="tag">AWGN</a>, <a href="http://www.raymaps.com/index.php/tag/ber/" rel="tag">BER</a>, <a href="http://www.raymaps.com/index.php/tag/lte/" rel="tag">LTE</a>, <a href="http://www.raymaps.com/index.php/tag/qam/" rel="tag">QAM</a>, <a href="http://www.raymaps.com/index.php/tag/qpsk/" rel="tag">QPSK</a>, <a href="http://www.raymaps.com/index.php/tag/wimax/" rel="tag">WiMAX</a></span><span class="author vcard"><a class="url fn n" href="http://www.raymaps.com/index.php/author/marko/" title="View all posts by John" rel="author">John</a></span>					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p style="text-align: justify;">Quadrature Amplitude Modulation (QAM) is an important modulation scheme as it allows for higher data rates and spectral efficiencies. The bit error rate (BER) of QAM can be calculated through Monte Carlo simulations. However this becomes quite complex as the constellation size of the modulation schemes increases. Therefore a theoretical approach is sometimes preferred. The BER for Gray coded QAM, for even number of bits per symbol, is shown below.</p>
+<figure id="attachment_1313" style="max-width: 516px" class="wp-caption aligncenter"><a href="http://www.raymaps.com/index.php/qam-theoretical-ber/qam_theoretical_ber/" rel="attachment wp-att-1313"><img class="size-full wp-image-1313 " title="BER of 4-QAM, 16-QAM, 64-QAM, 256-QAM" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/QAM_Theoretical_BER.jpg" alt="BER of 4-QAM, 16-QAM, 64-QAM, 256-QAM in AWGN" width="516" height="378" srcset="http://www.raymaps.com/wp-content/uploads/2011/12/QAM_Theoretical_BER.jpg 645w, http://www.raymaps.com/wp-content/uploads/2011/12/QAM_Theoretical_BER-300x220.jpg 300w" sizes="(max-width: 516px) 100vw, 516px"></a><figcaption class="wp-caption-text">BER of 4-QAM, 16-QAM, 64-QAM, 256-QAM in AWGN</figcaption></figure>
+<p style="text-align: justify;">Gray coding ensures that a symbol error results in a single bit error. The code for calculating the theoretical QAM BER for k even (even number of bits per symbol) is given below. The formula for calculating the BER for k odd is different, however, the formula given below can be used a first estimate.</p>
+<pre lang="matlab">EbNodB=-6:2:24
+EbNo=10.^(EbNodB/10);
+k=8;
+M=2^k;
+x=sqrt(3*k*EbNo/(M-1));
+Pb=(4/k)*(1-1/sqrt(M))*(1/2)*erfc(x/sqrt(2));
+semilogy(EbNodB,Pb)</pre>
+<p>Note:<br>
+1. Each additional bit/symbol requires about 2dB extra in SNR to achieve the same BER.<br>
+2. 4-QAM is essentially QPSK modulation.</p>
+
+<div class="post-ratings" data-post="1310">
+	
+	<div class="rating" data-post="1310" data-rating="0" data-readonly="0" style="cursor: pointer;"><i data-alt="1" class="star-off-png" title="bad"></i>&nbsp;<i data-alt="2" class="star-off-png" title="poor"></i>&nbsp;<i data-alt="3" class="star-off-png" title="regular"></i>&nbsp;<i data-alt="4" class="star-off-png" title="good"></i>&nbsp;<i data-alt="5" class="star-off-png" title="gorgeous"></i><input name="score" type="hidden"></div>
+
+	<div class="rating-meta">
+		<strong>0.00</strong> avg. rating (<strong>0</strong>% score) - <strong class="votes">0</strong> votes	</div>
+
+</div>	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+		
+			</footer><!-- .entry-meta -->
+</article><!-- #post -->
+					<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+
+			<a href="http://www.raymaps.com/index.php/mimo-capacity-fading-environment/" rel="prev"><span class="meta-nav">←</span> MIMO Capacity in a Fading Environment</a>			<a href="http://www.raymaps.com/index.php/soft-frequency-reuse/" rel="next">Soft Frequency Reuse in LTE <span class="meta-nav">→</span></a>
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+					
+<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			17 thoughts on “<span>QAM Theoretical BER in AWGN</span>”		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-126749" class="comment even thread-even depth-1">
+			<article id="div-comment-126749" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/d3aaa5419b68865f1a34afd6bf5ea455" srcset="http://1.gravatar.com/avatar/d3aaa5419b68865f1a34afd6bf5ea455?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">许子卿</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-126749">
+							<time datetime="2017-04-25T13:04:49+00:00">
+								April 25, 2017 at 1:04 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>How are you doing<br>
+I am doing the performance analysis of quasi-orthogonal space-time codes under QAM debugging, using MATLAB simulation, but I do not know the error rate simulation formula How to say, is the same as you write the simulation formula? If not, do you know what it is? I have a piece of code but is under QPSK debugging, its simulation formula is PPQOSTBC (KK) = 0.5*ERFC (sqrt (0.5*SNRQOSTBC)). Can you tell me if you know?<br>
+Thank you so much</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=126749#respond" onclick="return addComment.moveForm( &quot;div-comment-126749&quot;, &quot;126749&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to 许子卿">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-122206" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-122206" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/de218bb16e88b19da3bc8fb522ec7410" srcset="http://1.gravatar.com/avatar/de218bb16e88b19da3bc8fb522ec7410?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">Mansoore</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-122206">
+							<time datetime="2016-08-02T18:15:14+00:00">
+								August 2, 2016 at 6:15 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I simulate the BER performance of M-ary QAM .<br>
+now I want to check that result with theoretical ber. So, please send to me theoretical BER equation of M-ary QAM<br>
+thank U</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=122206#respond" onclick="return addComment.moveForm( &quot;div-comment-122206&quot;, &quot;122206&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to Mansoore">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-115390" class="comment even thread-even depth-1">
+			<article id="div-comment-115390" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/944cc6abe68dbaf305e9f3a098ec0d7e" srcset="http://0.gravatar.com/avatar/944cc6abe68dbaf305e9f3a098ec0d7e?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">Mariam Arshad</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-115390">
+							<time datetime="2015-10-30T19:25:04+00:00">
+								October 30, 2015 at 7:25 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hello, Can someone please help me with the following?<br>
+The source generates equal probable symbols, P(si) = 0.125, i=0,…,7, and Gray mapping is used to map information bits to the PAM signals.<br>
+(a) Create a  Matlab program so it can simulate the symbol error performance and the<br>
+bit error rate performance of the 8-PAM communication system for the transmission of packets of 10,000 symbols each.<br>
+(b) Using your program to simulate the symbol error performance and the bit error<br>
+performance of the system with<br>
+Eb/N0 = 0, 2, 4, 6, 8, 10 dB.</p>
+<p>So far, I have the following code.<br>
+N = 10^4; % number of symbols<br>
+&gt;&gt; alpha8pam = [-7 -5 -3 -1 1 3 5 7]; % 8-PAM alphabets<br>
+&gt;&gt; Es_N0_dB = [0:2:4:6:8:10]; % multiple Eb/N0 values<br>
+&gt;&gt; ipHat = zeros(1,N);<br>
+for ii = 1:length(Es_N0_dB)<br>
+ip = randsrc(1,N,alpha8pam);<br>
+s = (1/sqrt(5))*ip; % normalization of energy to 1<br>
+n = 1/sqrt(2)*[randn(1,N) + j*randn(1,N)]; % white guassian noise, 0dB variance</p>
+<p>y = s + 10^(-Es_N0_dB(ii)/20)*n; % additive white gaussian noise</p>
+<p>% demodulation<br>
+r = real(y); % taking only the real part<br>
+ipHat(find(r= 2/sqrt(5))) = 3;<br>
+ipHat(find(r&gt;=-2/sqrt(5) &amp; r=0 &amp; r&lt;2/sqrt(5))) = 1;</p>
+<p>I'm not sure how to write the rest of the 'iphat' values.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=115390#respond" onclick="return addComment.moveForm( &quot;div-comment-115390&quot;, &quot;115390&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to Mariam Arshad">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-110888" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-110888" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/c8558cf6c9152f30653bc1131aa3bb35" srcset="http://0.gravatar.com/avatar/c8558cf6c9152f30653bc1131aa3bb35?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">Aziz</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-110888">
+							<time datetime="2015-06-08T11:29:36+00:00">
+								June 8, 2015 at 11:29 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Sir can you tell me the formula theoretical BER of Tilted Quadrature Amplitude Modulation for rayleigh</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=110888#respond" onclick="return addComment.moveForm( &quot;div-comment-110888&quot;, &quot;110888&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to Aziz">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-106740" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-106740" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/a42eb49938965a21e719e3c352465f6a" srcset="http://1.gravatar.com/avatar/a42eb49938965a21e719e3c352465f6a?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">Carole</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-106740">
+							<time datetime="2015-01-14T14:32:41+00:00">
+								January 14, 2015 at 2:32 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hello,</p>
+<p>Can you please give us the theoretical Symbol Error Rate of a PAM Modulation?</p>
+<p>Thank you!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=106740#respond" onclick="return addComment.moveForm( &quot;div-comment-106740&quot;, &quot;106740&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to Carole">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-106911" class="comment byuser comment-author-marko bypostauthor odd alt depth-2">
+			<article id="div-comment-106911" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/933e7c51335a4e6b7dc03809e3958430" srcset="http://0.gravatar.com/avatar/933e7c51335a4e6b7dc03809e3958430?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn"><a href="http://www.raymaps.com/" rel="external nofollow" class="url">John</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-106911">
+							<time datetime="2015-01-19T07:10:28+00:00">
+								January 19, 2015 at 7:10 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Some valuable information about PAM can be found here:</p>
+<p><a href="http://www.mathworks.com/help/comm/ug/bit-error-rate-ber.html#bq423z2" rel="nofollow">http://www.mathworks.com/help/comm/ug/bit-error-rate-ber.html#bq423z2</a></p>
+<p>John</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=106911#respond" onclick="return addComment.moveForm( &quot;div-comment-106911&quot;, &quot;106911&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to John">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-67146" class="comment even thread-odd thread-alt depth-1">
+			<article id="div-comment-67146" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/cd2ea9a49f4d261c83eda340ac0326fe" srcset="http://0.gravatar.com/avatar/cd2ea9a49f4d261c83eda340ac0326fe?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">phil colbourn</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-67146">
+							<time datetime="2014-06-20T04:09:41+00:00">
+								June 20, 2014 at 4:09 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>My Octave version.</p>
+<p>I’m new to Octave and doing this sort of thing so please offer suggestions and corrections.</p>
+<p>function Y=Q(X)<br>
+	Y=0.5.*erfc(double(X)./sqrt(2))<br>
+endfunction</p>
+<p>EbNodB=0:2:30<br>
+EbNo=10.^(EbNodB/10)<br>
+K=[2 4 6 8]<br>
+M=2.^K<br>
+KM=double(3*K./(M-1))<br>
+KME=double(KM’*EbNo)<br>
+X=double(sqrt(KME))<br>
+Pb=double((4./K).*(1-1./sqrt(M)))’.*Q(X)<br>
+semilogy(EbNodB,Pb)<br>
+title(“M-QAM BER v SNR”)<br>
+grid on<br>
+grid minor on<br>
+legend(num2str(M’))<br>
+ylim([1e-8 1e0])<br>
+xlabel(“Eb/No (dB)”)<br>
+ylabel(“BER”)<br>
+print -dsvg q.svg</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=67146#respond" onclick="return addComment.moveForm( &quot;div-comment-67146&quot;, &quot;67146&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to phil colbourn">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-45393" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-45393" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/cf950965e8ac3c2301926fb9dbd54b68" srcset="http://0.gravatar.com/avatar/cf950965e8ac3c2301926fb9dbd54b68?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">Andrew</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-45393">
+							<time datetime="2014-05-25T10:18:03+00:00">
+								May 25, 2014 at 10:18 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hello,<br>
+I am not able to reproduce that graphic, could you send me the complete matlab code?</p>
+<p>Thank you!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=45393#respond" onclick="return addComment.moveForm( &quot;div-comment-45393&quot;, &quot;45393&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to Andrew">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-46647" class="comment byuser comment-author-marko bypostauthor even depth-2">
+			<article id="div-comment-46647" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/933e7c51335a4e6b7dc03809e3958430" srcset="http://0.gravatar.com/avatar/933e7c51335a4e6b7dc03809e3958430?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">John</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-46647">
+							<time datetime="2014-05-27T04:14:36+00:00">
+								May 27, 2014 at 4:14 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>This is the complete code. You should be able to reproduce the above Fig. If you are still unable to do so, please share your code here.</p>
+<p>John</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=46647#respond" onclick="return addComment.moveForm( &quot;div-comment-46647&quot;, &quot;46647&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to John">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-12429" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-12429" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/de580f68373d3e2d13f432bd3b52a5ab" srcset="http://1.gravatar.com/avatar/de580f68373d3e2d13f432bd3b52a5ab?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">prabhu</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-12429">
+							<time datetime="2013-06-13T07:12:27+00:00">
+								June 13, 2013 at 7:12 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I simulate the  BER performance of M-ary QAM over Rayleigh fading channel in Matlab tool, now I want to check that result with theoretical ber. So, please send to me theoretical BER equation of M-ary QAM over Rayleigh fading channel.</p>
+<p>Thanking you.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=12429#respond" onclick="return addComment.moveForm( &quot;div-comment-12429&quot;, &quot;12429&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to prabhu">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-11819" class="comment even thread-even depth-1">
+			<article id="div-comment-11819" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/3bcc3be5e7710d95e474171299263f24" srcset="http://0.gravatar.com/avatar/3bcc3be5e7710d95e474171299263f24?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">Chris</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-11819">
+							<time datetime="2013-05-16T19:44:42+00:00">
+								May 16, 2013 at 7:44 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hello, it seems that everyone is in need of those codes :).  Could you send me the code for matlab also??</p>
+<p>I’ll appreciate it. Thank you!!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=11819#respond" onclick="return addComment.moveForm( &quot;div-comment-11819&quot;, &quot;11819&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to Chris">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-3258" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-3258" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/dc5de6bda89555fc89219c439d317f2e" srcset="http://1.gravatar.com/avatar/dc5de6bda89555fc89219c439d317f2e?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">SHAIK BABAFAKRUDDEEN</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-3258">
+							<time datetime="2012-10-25T20:14:28+00:00">
+								October 25, 2012 at 8:14 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>plz send me BER  64 QAM modulation code in AWGN</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=3258#respond" onclick="return addComment.moveForm( &quot;div-comment-3258&quot;, &quot;3258&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to SHAIK BABAFAKRUDDEEN">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-1793" class="comment even thread-even depth-1">
+			<article id="div-comment-1793" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/b58599a20d5dd4e4065642f80dc77eeb" srcset="http://2.gravatar.com/avatar/b58599a20d5dd4e4065642f80dc77eeb?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">Alain</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-1793">
+							<time datetime="2012-05-23T16:42:24+00:00">
+								May 23, 2012 at 4:42 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I´ve proved with the same code and the result was diferent</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=1793#respond" onclick="return addComment.moveForm( &quot;div-comment-1793&quot;, &quot;1793&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to Alain">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-1776" class="comment byuser comment-author-marko bypostauthor odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-1776" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/933e7c51335a4e6b7dc03809e3958430" srcset="http://0.gravatar.com/avatar/933e7c51335a4e6b7dc03809e3958430?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">John</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-1776">
+							<time datetime="2012-05-18T11:09:12+00:00">
+								May 18, 2012 at 11:09 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Gordon: Frankly speaking I could not figure this out easily and had to do a simulation. It turns out that there is significant difference (2-3 dB) at low EbNo but at higher signal to noise ratios the difference is reduced to a fraction of a dB. </p>
+<p>The simulation considered 64-QAM modulation but similar results are expected for other modulation schemes.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=1776#respond" onclick="return addComment.moveForm( &quot;div-comment-1776&quot;, &quot;1776&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to John">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-1775" class="comment even thread-even depth-1">
+			<article id="div-comment-1775" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/66bd825c8ec372dceb7ebb13d40cc9f3" srcset="http://0.gravatar.com/avatar/66bd825c8ec372dceb7ebb13d40cc9f3?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">Gordon Kokubunji</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-1775">
+							<time datetime="2012-05-18T06:57:10+00:00">
+								May 18, 2012 at 6:57 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>May I know the sensitivity difference between the cases with and without gray coding?</p>
+<p>Best</p>
+<p>Gordon</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=1775#respond" onclick="return addComment.moveForm( &quot;div-comment-1775&quot;, &quot;1775&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to Gordon Kokubunji">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-1760" class="comment odd alt thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-1760" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/b58599a20d5dd4e4065642f80dc77eeb" srcset="http://2.gravatar.com/avatar/b58599a20d5dd4e4065642f80dc77eeb?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">Alain Fernandez</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-1760">
+							<time datetime="2012-05-13T16:32:24+00:00">
+								May 13, 2012 at 4:32 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hello,<br>
+I tried to do the graphic that you upload to the website in order to calculate the theorical BER of 4-QAM, 16-QAM and 64-QAM.<br>
+I am not able to reproduce that graphic, could you send me the complete matlab code??</p>
+<p>Thank you very much</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=1760#respond" onclick="return addComment.moveForm( &quot;div-comment-1760&quot;, &quot;1760&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to Alain Fernandez">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-1769" class="comment byuser comment-author-marko bypostauthor even depth-2">
+			<article id="div-comment-1769" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/933e7c51335a4e6b7dc03809e3958430" srcset="http://0.gravatar.com/avatar/933e7c51335a4e6b7dc03809e3958430?s=148&amp;r=g 2x" class="avatar avatar-74 photo" height="74" width="74">						<b class="fn">John</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.raymaps.com/index.php/qam-theoretical-ber/#comment-1769">
+							<time datetime="2012-05-16T05:37:06+00:00">
+								May 16, 2012 at 5:37 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Just use the code as it is. Change ‘k’ to get the different curves (k=2,4,6,8).</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/?replytocom=1769#respond" onclick="return addComment.moveForm( &quot;div-comment-1769&quot;, &quot;1769&quot;, &quot;respond&quot;, &quot;1310&quot; )" aria-label="Reply to John">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+		
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.raymaps.com/index.php/qam-theoretical-ber/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="http://www.raymaps.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" required="required"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1310" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="3d962b2c32"></p><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1513665219898"></form>
+			</div><!-- #respond -->
+	
+</div><!-- #comments -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+	<div id="tertiary" class="sidebar-container" role="complementary">
+		<div class="sidebar-inner">
+			<div class="widget-area">
+				<aside id="most_popular_posts-3" class="widget widget_most_popular_posts">
+<h3 class="widget-title">Most Popular Posts</h3>
+<ul>	<li><a href="http://www.raymaps.com/index.php/soft-frequency-reuse/">Soft Frequency Reuse in LTE</a> (37)</li>
+	<li><a href="http://www.raymaps.com/index.php/m-qam-bit-error-rate-in-rayleigh-fading/">M-QAM Bit Error Rate in Rayleigh Fading</a> (29)</li>
+	<li><a href="http://www.raymaps.com/index.php/lte-fading-simulator/">LTE Fading Simulator</a> (28)</li>
+	<li><a href="http://www.raymaps.com/index.php/how-to-calculate-the-area-required-by-solar-panels/">How to Calculate the Surface Area Required by Solar Panels</a> (20)</li>
+	<li><a href="http://www.raymaps.com/index.php/ber-of-64-qam-ofdm-in-frequency-selective-fading-ii/">BER of 64-QAM OFDM in Frequency Selective Fading-II</a> (19)</li>
+	<li><a href="http://www.raymaps.com/index.php/lte-multipath-channel-models/">LTE Multipath Channel Models</a> (18)</li>
+	<li><a href="http://www.raymaps.com/index.php/qam-theoretical-ber/">QAM Theoretical BER in AWGN</a> (17)</li>
+	<li><a href="http://www.raymaps.com/index.php/bit-error-rate-of-qpsk-in-rayleigh-fading/">Bit Error Rate of QPSK in Rayleigh Fading</a> (15)</li>
+	<li><a href="http://www.raymaps.com/index.php/average-cell-throughput-calculations-for-lte/">Average Cell Throughput Calculations for LTE</a> (14)</li>
+	<li><a href="http://www.raymaps.com/index.php/m-qam-in-awgn/">M-QAM Bit Error Rate in AWGN</a> (12)</li>
+</ul>
+</aside>
+		<aside id="recent-posts-7" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="http://www.raymaps.com/index.php/al-khwarizmis-method-of-solving-equations-in-one-variable/">Al Khwarizmi’s Method of Solving Equations in One Variable</a>
+									</li>
+											<li>
+					<a href="http://www.raymaps.com/index.php/al-beruni-method-for-calculation-of-radius-of-earth/">Al Beruni’s Method for Calculation of Radius of Earth</a>
+									</li>
+											<li>
+					<a href="http://www.raymaps.com/index.php/calculation-of-solar-panel-spacing-for-india-new-dehli/">Calculation of Solar Panel Spacing for India (New Dehli)</a>
+									</li>
+											<li>
+					<a href="http://www.raymaps.com/index.php/open-signal-coverage-maps-for-pakistan/">Open Signal Coverage Maps for Pakistan</a>
+									</li>
+											<li>
+					<a href="http://www.raymaps.com/index.php/ber-for-bpsk-ofdm-in-frequency-selective-channel/">BER for BPSK-OFDM in Frequency Selective Channel</a>
+									</li>
+											<li>
+					<a href="http://www.raymaps.com/index.php/rayleigh-fading-envelope-generation-python/">Rayleigh Fading Envelope Generation – Python</a>
+									</li>
+											<li>
+					<a href="http://www.raymaps.com/index.php/fourier-transform-python/">Fourier Transform in Python</a>
+									</li>
+											<li>
+					<a href="http://www.raymaps.com/index.php/alamouti-transmit-diversity-scheme-implemented-in-python/">Alamouti – Transmit Diversity Scheme – Implemented in Python</a>
+									</li>
+											<li>
+					<a href="http://www.raymaps.com/index.php/python-code-for-bpsk-ber-in-rayleigh-fading/">Python Code for BPSK BER in Rayleigh Fading</a>
+									</li>
+											<li>
+					<a href="http://www.raymaps.com/index.php/run-python-code-from-the-browser/">Run Python Code from the Browser</a>
+									</li>
+					</ul>
+		</aside><aside id="categories-4" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-22"><a href="http://www.raymaps.com/index.php/category/capacity/">Capacity</a> (13)
+</li>
+	<li class="cat-item cat-item-81"><a href="http://www.raymaps.com/index.php/category/fundamentals/">Fundamentals</a> (31)
+</li>
+	<li class="cat-item cat-item-19"><a href="http://www.raymaps.com/index.php/category/netplan/">Network Planning</a> (12)
+</li>
+	<li class="cat-item cat-item-20"><a href="http://www.raymaps.com/index.php/category/rand/">Random Thoughts</a> (5)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.raymaps.com/index.php/category/sim/">Simulation</a> (55)
+<ul class="children">
+	<li class="cat-item cat-item-12"><a href="http://www.raymaps.com/index.php/category/sim/ant/">Antennas</a> (12)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.raymaps.com/index.php/category/sim/berp/">BER Performance</a> (23)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.raymaps.com/index.php/category/sim/chancap/">Channel Capacity</a> (2)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.raymaps.com/index.php/category/sim/chanmod/">Channel Modeling</a> (20)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-89"><a href="http://www.raymaps.com/index.php/category/solar-energy/">Solar Energy</a> (4)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.raymaps.com/index.php/category/stand/">Standards</a> (52)
+<ul class="children">
+	<li class="cat-item cat-item-17"><a href="http://www.raymaps.com/index.php/category/stand/hspa/">HSPA</a> (2)
+</li>
+	<li class="cat-item cat-item-18"><a href="http://www.raymaps.com/index.php/category/stand/lte/">LTE</a> (46)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.raymaps.com/index.php/category/stand/wcdma/">WCDMA</a> (5)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.raymaps.com/index.php/category/stand/wifi/">WiFi</a> (1)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://www.raymaps.com/index.php/category/stand/wimax/">WiMAX</a> (24)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.raymaps.com/index.php/category/uncategorized/">Uncategorized</a> (8)
+</li>
+		</ul>
+</aside>			</div><!-- .widget-area -->
+		</div><!-- .sidebar-inner -->
+	</div><!-- #tertiary -->
+
+		</div><!-- #main -->
+		<footer id="colophon" class="site-footer" role="contentinfo">
+				<div id="secondary" class="sidebar-container" role="complementary">
+		<div class="widget-area masonry" style="position: relative; height: 621px;">
+			<aside id="tag_cloud-3" class="widget widget_tag_cloud masonry-brick" style="position: absolute; left: 0px; top: 0px;"><h3 class="widget-title">Tag Cloud</h3><div class="tagcloud"><ul class="wp-tag-cloud" role="list">
+	<li><a href="http://www.raymaps.com/index.php/tag/4g/" class="tag-cloud-link tag-link-47 tag-link-position-1" style="font-size: 17.459459459459pt;" aria-label="4G (16 items)">4G</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/alamouti/" class="tag-cloud-link tag-link-33 tag-link-position-2" style="font-size: 8pt;" aria-label="Alamouti (2 items)">Alamouti</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/antenna/" class="tag-cloud-link tag-link-38 tag-link-position-3" style="font-size: 17.081081081081pt;" aria-label="Antenna (15 items)">Antenna</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/awgn/" class="tag-cloud-link tag-link-77 tag-link-position-4" style="font-size: 10.774774774775pt;" aria-label="AWGN (4 items)">AWGN</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/ber/" class="tag-cloud-link tag-link-34 tag-link-position-5" style="font-size: 18.342342342342pt;" aria-label="BER (19 items)">BER</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/bit-error-rate/" class="tag-cloud-link tag-link-104 tag-link-position-6" style="font-size: 11.783783783784pt;" aria-label="BIT ERROR RATE (5 items)">BIT ERROR RATE</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/bpsk/" class="tag-cloud-link tag-link-37 tag-link-position-7" style="font-size: 12.666666666667pt;" aria-label="BPSK (6 items)">BPSK</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/california/" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 8pt;" aria-label="California (2 items)">California</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/capacity/" class="tag-cloud-link tag-link-115 tag-link-position-9" style="font-size: 9.5135135135135pt;" aria-label="Capacity (3 items)">Capacity</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/channel/" class="tag-cloud-link tag-link-56 tag-link-position-10" style="font-size: 15.945945945946pt;" aria-label="Channel (12 items)">Channel</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/coverage/" class="tag-cloud-link tag-link-46 tag-link-position-11" style="font-size: 14.558558558559pt;" aria-label="Coverage (9 items)">Coverage</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/dft/" class="tag-cloud-link tag-link-83 tag-link-position-12" style="font-size: 10.774774774775pt;" aria-label="DFT (4 items)">DFT</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/diversity/" class="tag-cloud-link tag-link-35 tag-link-position-13" style="font-size: 12.666666666667pt;" aria-label="Diversity (6 items)">Diversity</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/em-wave/" class="tag-cloud-link tag-link-45 tag-link-position-14" style="font-size: 11.783783783784pt;" aria-label="EM Wave (5 items)">EM Wave</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/fading/" class="tag-cloud-link tag-link-58 tag-link-position-15" style="font-size: 15.063063063063pt;" aria-label="Fading (10 items)">Fading</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/fdma/" class="tag-cloud-link tag-link-31 tag-link-position-16" style="font-size: 8pt;" aria-label="FDMA (2 items)">FDMA</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/fft/" class="tag-cloud-link tag-link-82 tag-link-position-17" style="font-size: 11.783783783784pt;" aria-label="FFT (5 items)">FFT</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/gsm/" class="tag-cloud-link tag-link-30 tag-link-position-18" style="font-size: 8pt;" aria-label="GSM (2 items)">GSM</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/hspa-2/" class="tag-cloud-link tag-link-50 tag-link-position-19" style="font-size: 9.5135135135135pt;" aria-label="HSPA+ (3 items)">HSPA+</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/lte/" class="tag-cloud-link tag-link-114 tag-link-position-20" style="font-size: 22pt;" aria-label="LTE (38 items)">LTE</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/mimo/" class="tag-cloud-link tag-link-42 tag-link-position-21" style="font-size: 10.774774774775pt;" aria-label="MIMO (4 items)">MIMO</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/modulation/" class="tag-cloud-link tag-link-105 tag-link-position-22" style="font-size: 10.774774774775pt;" aria-label="Modulation (4 items)">Modulation</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/multipath/" class="tag-cloud-link tag-link-57 tag-link-position-23" style="font-size: 12.666666666667pt;" aria-label="Multipath (6 items)">Multipath</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/network-planning/" class="tag-cloud-link tag-link-43 tag-link-position-24" style="font-size: 13.297297297297pt;" aria-label="Network Planning (7 items)">Network Planning</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/ofdm/" class="tag-cloud-link tag-link-51 tag-link-position-25" style="font-size: 15.567567567568pt;" aria-label="OFDM (11 items)">OFDM</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/path-loss/" class="tag-cloud-link tag-link-52 tag-link-position-26" style="font-size: 12.666666666667pt;" aria-label="Path Loss (6 items)">Path Loss</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/pv/" class="tag-cloud-link tag-link-92 tag-link-position-27" style="font-size: 9.5135135135135pt;" aria-label="PV (3 items)">PV</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/python/" class="tag-cloud-link tag-link-134 tag-link-position-28" style="font-size: 12.666666666667pt;" aria-label="Python (6 items)">Python</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/qam/" class="tag-cloud-link tag-link-27 tag-link-position-29" style="font-size: 12.666666666667pt;" aria-label="QAM (6 items)">QAM</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/qpsk/" class="tag-cloud-link tag-link-36 tag-link-position-30" style="font-size: 9.5135135135135pt;" aria-label="QPSK (3 items)">QPSK</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/radiation-pattern/" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 10.774774774775pt;" aria-label="Radiation Pattern (4 items)">Radiation Pattern</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/rayleigh/" class="tag-cloud-link tag-link-64 tag-link-position-32" style="font-size: 14.558558558559pt;" aria-label="Rayleigh (9 items)">Rayleigh</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/rayleigh-fading/" class="tag-cloud-link tag-link-59 tag-link-position-33" style="font-size: 14.558558558559pt;" aria-label="Rayleigh Fading (9 items)">Rayleigh Fading</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/ray-tracing/" class="tag-cloud-link tag-link-97 tag-link-position-34" style="font-size: 10.774774774775pt;" aria-label="Ray Tracing (4 items)">Ray Tracing</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/ring-model/" class="tag-cloud-link tag-link-41 tag-link-position-35" style="font-size: 9.5135135135135pt;" aria-label="Ring Model (3 items)">Ring Model</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/shannon-capacity/" class="tag-cloud-link tag-link-28 tag-link-position-36" style="font-size: 14.558558558559pt;" aria-label="Shannon Capacity (9 items)">Shannon Capacity</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/sim/" class="tag-cloud-link tag-link-111 tag-link-position-37" style="font-size: 10.774774774775pt;" aria-label="Simulation (4 items)">Simulation</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/sinr/" class="tag-cloud-link tag-link-26 tag-link-position-38" style="font-size: 9.5135135135135pt;" aria-label="SINR (3 items)">SINR</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/siso/" class="tag-cloud-link tag-link-40 tag-link-position-39" style="font-size: 8pt;" aria-label="SISO (2 items)">SISO</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/snr/" class="tag-cloud-link tag-link-29 tag-link-position-40" style="font-size: 13.927927927928pt;" aria-label="SNR (8 items)">SNR</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/solar/" class="tag-cloud-link tag-link-44 tag-link-position-41" style="font-size: 10.774774774775pt;" aria-label="Solar (4 items)">Solar</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/spectrum/" class="tag-cloud-link tag-link-23 tag-link-position-42" style="font-size: 8pt;" aria-label="Spectrum (2 items)">Spectrum</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/throughput/" class="tag-cloud-link tag-link-25 tag-link-position-43" style="font-size: 9.5135135135135pt;" aria-label="Throughput (3 items)">Throughput</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/wcdma/" class="tag-cloud-link tag-link-113 tag-link-position-44" style="font-size: 11.783783783784pt;" aria-label="WCDMA (5 items)">WCDMA</a></li>
+	<li><a href="http://www.raymaps.com/index.php/tag/wimax/" class="tag-cloud-link tag-link-112 tag-link-position-45" style="font-size: 17.459459459459pt;" aria-label="WiMAX (16 items)">WiMAX</a></li>
+</ul>
+</div>
+</aside><aside id="calendar-5" class="widget widget_calendar masonry-brick" style="position: absolute; left: 248px; top: 0px;"><h3 class="widget-title">Calendar</h3><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar">
+	<caption>December 2017</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Monday">M</th>
+		<th scope="col" title="Tuesday">T</th>
+		<th scope="col" title="Wednesday">W</th>
+		<th scope="col" title="Thursday">T</th>
+		<th scope="col" title="Friday">F</th>
+		<th scope="col" title="Saturday">S</th>
+		<th scope="col" title="Sunday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://www.raymaps.com/index.php/2017/11/">« Nov</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="4" class="pad">&nbsp;</td><td>1</td><td><a href="http://www.raymaps.com/index.php/2017/12/02/" aria-label="Posts published on December 2, 2017">2</a></td><td>3</td>
+	</tr>
+	<tr>
+		<td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td><a href="http://www.raymaps.com/index.php/2017/12/10/" aria-label="Posts published on December 10, 2017">10</a></td>
+	</tr>
+	<tr>
+		<td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td><a href="http://www.raymaps.com/index.php/2017/12/16/" aria-label="Posts published on December 16, 2017">16</a></td><td>17</td>
+	</tr>
+	<tr>
+		<td>18</td><td id="today">19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+	</tr>
+	<tr>
+		<td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+	</tr>
+	</tbody>
+	</table></div></aside><aside id="search-4" class="widget widget_search masonry-brick" style="position: absolute; left: 496px; top: 0px;"><h3 class="widget-title">Search</h3><form role="search" method="get" class="search-form" action="http://www.raymaps.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form></aside><aside id="meta-5" class="widget widget_meta masonry-brick" style="position: absolute; left: 496px; top: 131px;"><h3 class="widget-title">Meta</h3>			<ul>
+			<li><a href="http://www.raymaps.com/wp-login.php?action=register">Register</a></li>			<li><a href="http://www.raymaps.com/wp-login.php">Log in</a></li>
+			<li><a href="http://www.raymaps.com/index.php/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.raymaps.com/index.php/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</aside>		</div><!-- .widget-area -->
+	</div><!-- #secondary -->
+
+			<div class="site-info">
+								<a href="https://wordpress.org/">Proudly powered by WordPress</a>
+			</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+	<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/imagesloaded.min.js"></script>
+<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/masonry.min.js"></script>
+<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/functions.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var post_ratings = {"ajaxURL":"http:\/\/www.raymaps.com\/wp-admin\/admin-ajax.php","nonce":"d9e8745449","path":"http:\/\/www.raymaps.com\/wp-content\/plugins\/post-ratings\/assets\/images\/","number":"5"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/post-ratings.js"></script>
+<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/jquery.raty.js"></script>
+<script type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/wp-embed.min.js"></script>
+<script async="async" type="text/javascript" src="./QAM Theoretical BER in AWGN _ RAYmaps_files/form.js"></script>
+
+</body></html>

@@ -23,14 +23,14 @@ close all
 %              ];
 
 % 1     1     1     0     0     1     1     0     0     0     0     1     0     0     0     1
-rxBits=[      
-    0     0
-    1     1
-    1     0
-    0     0
-    0     1
-    1     0
- ];
+% rxBits=[      
+%     0     0
+%     1     1
+%     1     0
+%     0     0
+%     0     1
+%     1     0
+%  ];
 % INPUT:    00 11 10 00 | 01 10 01 11 | 11 10 00 10 | 11 00 11 10 | 11         
 % RECEIVED: 00 11 11 00 | 01 10 01 11 | 11 10 00 00 | 11 00 11 10 | 11 
 % WRONG:          x                          x
@@ -53,6 +53,9 @@ rxBits=[
 % current state = 00 then next state posible is: 00 or 10, ref: table next
 % steps
 % 
+inputData = myconvcode([0 1 1 1 1 0 0 1]);
+rxBits = reshape(inputData,[2,8]);
+rxBits = rxBits.';
 currentState = 0;
 N = length(rxBits);
 % keep the weight based on each steps
@@ -64,6 +67,7 @@ state_history(1:4, 1:N+1)=Inf;
 for st = 1:1:N+1
     % this variables will contains all temporal state in one steps
     next_states=[];
+    distance
     % if st = 1
     if st == 1
         %Initialization of distance for start point = 0
@@ -94,6 +98,7 @@ for st = 1:1:N+1
             output1=getOutputBit(1, temp_pos);
             % get the pair bits symbol at step st-1
             step_bit = rxBits(st-1,:);
+            
             %calculate bit error if bit = 0
             weight_at_0 = sum(abs(step_bit - outputO));
             %calculate bit error if bit = 1
@@ -152,8 +157,8 @@ for st = 1:1:N+1
         
     end
     
-    distance_flip = fliplr(distance)
-    state_history_flip = fliplr(state_history)
+    distance_flip = fliplr(distance);
+    state_history_flip = fliplr(state_history);
     % END checking st
 end
 % winning path sequences
