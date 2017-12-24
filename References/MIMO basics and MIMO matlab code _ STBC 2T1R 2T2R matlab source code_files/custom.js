@@ -1,0 +1,1 @@
+$(document).ready(function(){$("ul.dropdown").superfish({autoArrows:!0,animation:{height:"show"}})});
